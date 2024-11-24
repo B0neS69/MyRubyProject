@@ -1,0 +1,43 @@
+/* Global Styles */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f9;
+    color: #333;
+  }
+  
+  /* Home Page Description */
+  .home-description {
+    list-style-type: square;
+    margin-top: 40px;
+    margin-left: 80px;
+    margin-right: 80px;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    font-size: 18px;
+    line-height: 1.8;
+    text-align: justify;
+  }
+  
+  /* Buttons */
+  .btn-success {
+    background-color: #28a745;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 14px;
+    margin: 4px 2px;
+    cursor: pointer;
+    border-radius: 8px;
+    font-weight: bold;
+  }
+  
+  .btn-success:hover {
+    background-color: #218838;
+  }
+  

@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyRubyStore</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>">
+</head>
+
+<body>
+  <header>
+    <h1>Add a New Product</h1>
+    <nav>
+      <%= link_to 'Home', root_path %> |
+      <%= link_to 'Back to Products', products_path %>
+    </nav>
+  </header>
+
+  <div class="new-product-form">
+    <%= form_with model: @product, local: true do |form| %>
+      <% if @product.errors.any? %>
+        <div class="errors">
+          <h2>Errors:</h2>
+          <ul>
+            <% @product.errors.full_messages.each do |message| %>
+              <li><%= message %></li>
+            <% end %>
+          </ul>
+        </div>
+      <% end %>
+
+      <div>
+        <%= form.label :name, 'Product Name' %>
+        <%= form.text_field :name %>
+      </div>
+
+      <div>
+        <%= form.label :category, 'Category' %>
+        <%= form.select :category, ['Лак', 'Фарба', 'Вапно', 'Інше'], prompt: 'Select category' %>
+      </div>
+
+      <div>
+        <%= form.label :description, 'Description' %>
+        <%= form.text_area :description, placeholder: 'Опишіть товар українською' %>
+      </div>
+
+      <div>
+        <%= form.label :price, 'Price' %>
+        <%= form.number_field :price, step: 0.01 %>
+      </div>
+
+      <div>
+        <%= form.label :image, 'Product Image' %>
+        <%= form.file_field :image %>
+      </div>
+
+      <div>
+        <%= form.submit 'Add Product' %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

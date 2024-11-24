@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyRubyStore - Каталог</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('catalog.css') %>">
+</head>
+
+<body>
+  <header>
+    <h1>Наші продукти</h1>
+  </header>
+
+  <div class="product-list">
+    <% @products.each do |product| %>
+      <div class="product-card">
+        <% if product.image.attached? %>
+          <div class="product-image">
+            <%= link_to image_tag(product.image, style: "max-width: 100%; height: auto;"), product_path(product) %>
+          </div>
+        <% else %>
+          <%= link_to image_tag('placeholder.png', style: "max-width: 100%; height: auto;"), product_path(product) %>
+        <% end %>
+
+        <h3><%= link_to product.name, product_path(product) %></h3>
+        <p><strong>Категорія:</strong> <%= product.category %></p>
+        <p><strong>Опис:</strong> <%= product.description %></p>
+        <p><strong>Ціна:</strong> <%= product.price %> грн</p>
+
+        <% if user_signed_in? %>
+          <%= form_with url: cart_cart_items_path, method: :post, local: true do |form| %>
+            <%= hidden_field_tag :product_id, product.id %>
+            <%= form.submit "Додати до кошика", class: "btn btn-success" %>
+          <% end %>
+        <% else %>
+          <p class="alert alert-warning" style="color: #856404; background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px;">
+            Увійдіть у свій акаунт, щоб додати товар до кошика.
+          </p>
+        <% end %>
+      </div>
+    <% end %>
+  </div>
+</body>
+</html>

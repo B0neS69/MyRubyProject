@@ -1,0 +1,78 @@
+/* Header Styles */
+header {
+    background-color: #3a3a3a; /* Темно-сірий фон */
+    color: #ffffff; /* Білий текст */
+    padding: 10px 20px;
+    text-align: center;
+    border-bottom: 3px solid #555555; /* Рамка знизу */
+}
+
+/* Navbar Styles */
+.navbar {
+    background-color: #3a3a3a; /* Темно-сірий фон */
+    padding: 10px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-bottom: 1px solid #555555; /* Легка рамка */
+}
+
+.navbar a {
+    color: #d4d4d4; /* Світло-сірий текст */
+    padding: 8px 12px;
+    border-radius: 4px;
+    transition: background-color 0.3s, color 0.3s;
+}
+
+.navbar a:hover {
+    background-color: #555555; /* Темніший сірий фон при наведенні */
+    color: white;
+}
+
+.navbar .active {
+    background-color: #4caf50; /* Приглушений зелений для активного пункту */
+    color: white;
+}
+
+.navbar-auth {
+    display: flex;
+    align-items: center;
+    gap: 10px; /* Відступ між елементами */
+}
+
+.navbar-auth p {
+    margin: 0;
+    color: #d4d4d4;
+}
+
+/* Footer Styles */
+.footer {
+    background-color: #2c2c2c; /* Темний фон */
+    color: #d4d4d4; /* Світлий текст */
+    padding: 20px;
+    text-align: center;
+    border-top: 3px solid #555555; /* Рамка зверху */
+    margin-top: 150px;
+}
+
+.footer-container p {
+    font-weight: bold;
+    margin-bottom: 10px;
+    color: white;
+}
+
+.footer-container ul {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0;
+}
+
+.footer-container li {
+    margin: 5px 0;
+    color: #b5b5b5;
+}
+
+.footer-copy p {
+    font-size: 14px;
+    color: #a7a7a7;
+}

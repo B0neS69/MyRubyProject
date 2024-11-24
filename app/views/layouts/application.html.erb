@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= content_for(:title) || "My Ruby Project" %></title>
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= yield :head %>
+    
+    <link rel="stylesheet" type="text/css" href="<%= asset_path('header_footer.css') %>">
+    <link rel="manifest" href="/manifest.json">
+    <link rel="icon" href="/icon.png" type="image/png">
+    <link rel="icon" href="/icon.svg" type="image/svg+xml">
+    <link rel="apple-touch-icon" href="/icon.png">
+    <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
+    <%= javascript_importmap_tags %>
+  </head>
+
+  <body>
+    <!-- Навігаційна панель -->
+    <nav class="navbar">
+      <div class="navbar-brand">
+        <h1><a href="/" class="navbar-title">MyRubyStore</a></h1>
+      </div>
+      <div class="navbar-links">
+        <%= link_to 'Головна', root_path, class: 'navbar-link' %>
+        <%= link_to 'Каталог', products_path, class: 'navbar-link' %>
+        <%= link_to 'Відгуки', feedbacks_path, class: 'navbar-link' %>
+        <% if user_signed_in? %>
+          <%= link_to 'Корзина', cart_path, class: 'navbar-link' %>
+          <%= link_to 'Мій кабінет', user_orders_path, class: 'navbar-link btn-info' %>
+        <% end %>
+      </div>
+      <div class="navbar-auth">
+        <% if user_signed_in? %>
+          <p>Вітаю, <%= current_user.first_name %> <%= current_user.last_name %>!</p>
+          <%= link_to 'Вийти', destroy_user_session_path, method: :delete, class: 'btn-secondary' %>
+        <% else %>
+          <%= link_to 'Увійти', new_user_session_path, class: 'btn-primary' %>
+        <% end %>
+      </div>
+    </nav>
+
+    <!-- Повідомлення -->
+    <% if notice %>
+      <div class="alert alert-info">
+        <%= notice %>
+      </div>
+    <% end %>
+    <% if alert %>
+      <div class="alert alert-danger">
+        <%= alert %>
+      </div>
+    <% end %>
+
+    <!-- Основний контент -->
+    <main>
+      <%= yield %>
+    </main>
+
+    <!-- Футер -->
+    <footer class="footer">
+      <div class="footer-container">
+        <p>Контактна інформація:</p>
+        <ul>
+          <li>Email: support@myrubystore.com</li>
+          <li>Телефон: +38 (098) 123-45-67</li>
+          <li>Адреса: м. Київ, вул. Хрещатик, 10</li>
+        </ul>
+      </div>
+      <div class="footer-copy">
+        <p>&copy; <%= Time.current.year %> MyRubyStore. Всі права захищені.</p>
+      </div>
+    </footer>
+  </body>
+</html>

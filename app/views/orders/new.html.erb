@@ -1,0 +1,59 @@
+<!-- app/views/orders/new.html.erb -->
+<link rel="stylesheet" type="text/css" href="<%= asset_path('new_order.css') %>">
+
+<div class="order-form-container">
+  <h2>Оформити замовлення</h2>
+
+  <%= form_with model: @order, local: true do |form| %>
+    <div>
+      <%= form.label :first_name, "Ім'я" %>
+      <%= form.text_field :first_name, class: 'rounded-input' %>
+    </div>
+    
+    <div>
+      <%= form.label :last_name, "Прізвище" %>
+      <%= form.text_field :last_name, class: 'rounded-input' %>
+    </div>
+
+    <div>
+      <%= form.label :phone, "Номер телефону" %>
+      <%= form.text_field :phone, class: 'rounded-input' %>
+    </div>
+
+    <div>
+      <%= form.label :email, "Електронна пошта" %>
+      <%= form.email_field :email, class: 'rounded-input' %>
+    </div>
+
+    <div>
+      <%= form.label :city, "Місто" %>
+      <%= form.text_field :city, class: 'rounded-input' %>
+    </div>
+
+    <div>
+      <%= form.label :region, "Область" %>
+      <%= form.text_field :region, class: 'rounded-input' %>
+    </div>
+    
+    <div>
+      <%= form.label :address, "Адреса доставки" %>
+      <%= form.text_area :address, class: 'rounded-input' %>
+    </div>
+
+    <div>
+    <%= form.label :delivery_method, "Спосіб доставки" %>
+    <%= form.select :delivery_method, options_for_select([['Кур\'єром', 'Кур\'єром'], ['Поштою', 'Поштою'], ['Поштомат', 'Поштомат']]) %>
+  </div>
+
+  <div>
+    <%= form.label :payment_method, "Спосіб оплати" %>
+    <%= form.select :payment_method, options_for_select([['Готівка', 'Готівка'], ['Картка', 'Картка'], ['Онлайн платіж', 'Онлайн платіж']]) %>
+  </div>
+
+
+
+    <div>
+      <%= form.submit 'Оформити замовлення', class: 'btn btn-success' %>
+    </div>
+  <% end %>
+</div>

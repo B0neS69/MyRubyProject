@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= @product.name %> - MyRubyStore</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('product_details.css') %>">
+</head>
+
+<body>
+
+
+  <div class="product-details" style="display: flex; padding: 20px;">
+    <!-- Зображення товару -->
+    <div class="product-image" style="flex: 1; text-align: center;">
+      <% if @product.image.attached? %>
+        <%= image_tag @product.image, style: "max-width: 100%; height: auto;" %>
+        <% else %>
+        <%= image_tag 'placeholder.png', style: "max-width: 100%; height: auto;" %>
+      <% end %>
+    </div>
+
+    <!-- Інформація про товар -->
+    <div class="product-info" style="flex: 2; padding-left: 20px;">
+      <h1><%= @product.name %></h1>
+      <h3>Ціна: <%= @product.price %> грн</h3>
+    <div align="left" class="divbutton">
+      <% if user_signed_in? %>
+      <%= form_with url: cart_cart_items_path, method: :post, local: true do |form| %>
+        <%= hidden_field_tag :product_id, @product.id %>
+        <%= form.submit "Замовити", class: "btn btn-success" %>
+      <% end %>
+    <% else %>
+      <p class="alert alert-warning" style="color: #856404; background-color: #fff3cd; border: 1px solid #ffeeba; padding: 10px;">
+        Увійдіть у свій акаунт, щоб додати товар до кошика.
+      </p>
+    <% end %>
+    </div>
+
+      <div class="product-description" style="margin-top: 20px;">
+        <h4>Опис:</h4>
+        <p><%= @product.description %></p>
+      </div>
+    </div>
+  </div>
+  <div class="feedback-form-container">
+  <h2>Залишіть відгук</h2>
+  <%= form_with model: @feedback, url: feedbacks_path, local: true do |form| %>
+    <div>
+      <%= form.label :rating, "Оцінка (1-5)" %>
+      <%= form.number_field :rating, min: 1, max: 5, required: true %>
+    </div>
+
+    <div>
+      <%= form.label :comment, "Ваш відгук" %>
+      <%= form.text_area :comment, rows: 5, maxlength: 500, required: true %>
+    </div>
+
+    <div>
+      <%= form.submit "Відправити відгук", class: "btn" %>
+    </div>
+  <% end %>
+</div>
+<div class="feedbacks">
+  <h2>Відгуки</h2>
+  <% @feedbacks.each do |feedback| %>
+    <div class="feedback-item">
+      <h4><%= feedback.user.first_name %> <%= feedback.user.last_name %></h4>
+      <p class="rating">Rating: <%= feedback.rating %>/5</p>
+      <p><%= feedback.comment %></p>
+      <small>Розміщений <%= feedback.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+    </div>
+  <% end %>
+</div>
+
+</body>
+</html>

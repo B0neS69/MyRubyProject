@@ -1,0 +1,38 @@
+<!-- app/views/home/index.html.erb -->
+<!DOCTYPE html>
+<html>
+<head>
+  <title>MyRubyStore</title>
+  <%= csrf_meta_tags %>
+  <%= csp_meta_tag %>
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('application.css') %>">
+  <link rel="stylesheet" type="text/css" href="<%= asset_path('home.css') %>">
+
+</head>
+
+<body>
+  <header>
+    <h1>Welcome to MyRubyStore</h1>
+  </header>
+
+  <div class="home-description">
+  <h2>Про наш магазин</h2>
+  <p>Ласкаво просимо до MyRubyStore!</p> 
+  <p> Ми раді запропонувати вам широкий вибір товарів за найкращими цінами. У нашому магазині ви знайдете все необхідне: від електроніки до одягу. 
+  Ми прагнемо забезпечити високу якість обслуговування та комфортний процес покупки.</p>
+  
+  <p>Наші переваги:</p>
+  <ul>
+    <li>Швидка доставка по всій Україні</li>
+    <li>Зручні способи оплати</li>
+    <li>Висока якість товарів</li>
+    <li>Постійні акції та знижки</li>
+  </ul>
+  
+  <p>Не гайте часу! Обирайте потрібні товари та робіть замовлення прямо зараз.</p>
+  <%= link_to 'Переглянути товари', products_path, class: 'btn btn-success' %>
+</div>
+
+
+</body>
+</html>

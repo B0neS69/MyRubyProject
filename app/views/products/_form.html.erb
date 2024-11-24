@@ -1,0 +1,42 @@
+<%= form_with(model: product, local: true) do |form| %>
+    <% if product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(product.errors.count, "error") %> не дозволяє зберегти продукт:</h2>
+        <ul>
+          <% product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+  
+    <div class="field">
+      <%= form.label :name, "Назва" %>
+      <%= form.text_field :name, required: true %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :category, "Категорія" %>
+      <%= form.select :category, ["лак", "фарба", "вапно", "інше"], prompt: "Оберіть категорію" %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :description, "Опис" %>
+      <%= form.text_area :description, required: true %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :price, "Ціна (₴)" %>
+      <%= form.number_field :price, step: 0.01, required: true %>
+    </div>
+  
+    <div class="field">
+      <%= form.label :image, "Посилання на зображення" %>
+      <%= form.text_field :image, required: true %>
+    </div>
+  
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+  

@@ -1,0 +1,14 @@
+
+<link rel="stylesheet" type="text/css" href="<%= asset_path('product_details.css') %>">
+<h1 class="h1_feedback">Відгуки клієнтів</h1>
+<div class="feedbacks">
+
+  <% @feedbacks.each do |feedback| %>
+    <div class="feedback-item">
+      <h4><%= feedback.user.first_name %> <%= feedback.user.last_name %></h4>
+      <p class="rating">Rating: <%= feedback.rating %>/5</p>
+      <p><%= feedback.comment %></p>
+      <small>Розміщений <%= feedback.created_at.strftime("%Y-%m-%d %H:%M") %></small>
+    </div>
+  <% end %>
+</div>

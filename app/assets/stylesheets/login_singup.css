@@ -1,0 +1,88 @@
+/* Контейнер форми */
+form {
+    max-width: 400px;
+    margin: 0 auto;
+    padding: 20px;
+    background-color: #ffffff;
+    border-radius: 12px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  }
+  
+  /* Заголовки */
+  h2 {
+    text-align: center;
+    font-size: 1.8em;
+    margin-bottom: 20px;
+    color: #2c3e50;
+  }
+  
+  /* Поля вводу */
+  .field label {
+    display: block;
+    margin-bottom: 5px;
+    font-weight: bold;
+    color: #2c3e50;
+  }
+  
+  .field input[type="text"],
+  .field input[type="email"],
+  .field input[type="password"],
+  .field input[type="checkbox"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 15px;
+    border: 1px solid #ddd;
+    border-radius: 8px;
+    box-sizing: border-box;
+    font-size: 14px;
+    color: #2c3e50;
+  }
+  
+  /* Поля вводу: фокус */
+  .field input:focus {
+    border-color: #3498db;
+    outline: none;
+    box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+  }
+  
+  /* Кнопки */
+  .actions input[type="submit"] {
+    width: 100%;
+    padding: 12px 20px;
+    background-color: #3498db;
+    color: #ffffff;
+    border: none;
+    border-radius: 8px;
+    font-size: 16px;
+    cursor: pointer;
+    transition: background-color 0.3s ease, transform 0.3s ease;
+  }
+  
+  .actions input[type="submit"]:hover {
+    background-color: #217dbb;
+    transform: scale(1.02);
+  }
+  
+  /* Чекбокси */
+  .field input[type="checkbox"] {
+    width: auto;
+    margin-right: 10px;
+  }
+  
+  /* Посилання */
+  .devise-links {
+    text-align: center;
+    margin-top: 15px;
+  }
+  
+  .devise-links a {
+    color: #3498db;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s ease;
+  }
+  
+  .devise-links a:hover {
+    color: #217dbb;
+  }
+  

@@ -1,0 +1,49 @@
+<h1>Моя корзина</h1>
+<link rel="stylesheet" type="text/css" href="<%= asset_path('cart_style.css') %>">
+
+<% if @cart.cart_items.any? %>
+  <table class="cart-table">
+    <thead>
+      <tr>
+        <th>Товар</th>
+        <th>Кількість</th>
+        <th>Ціна</th>
+        <th>Загальна ціна</th>
+        <th>Дії</th>
+      </tr>
+    </thead>
+    <tbody> 
+      <% @cart.cart_items.each do |cart_item| %>
+        <% if cart_item.product.present? %>  <!-- Перевірка на наявність продукту -->
+          <tr id="cart-item-<%= cart_item.id %>">
+            <td><%= cart_item.product.name %> - <%= cart_item.product.price %> грн</td>
+            <td>
+              <%= form_for cart_item, url: cart_cart_item_path(cart_item) do |f| %>
+                <%= f.number_field :quantity, value: cart_item.quantity, min: 1, max: 100 %>
+                <%= f.submit 'Оновити', class: 'btn btn-primary' %>
+              <% end %>
+            </td>
+            <td class="price"><%= cart_item.product.price %></td>
+
+            <td class="total-price"><%= cart_item.quantity * cart_item.product.price %></td>
+
+            <td>
+              <%= form_with model: cart_item, url: cart_cart_item_path(cart_item), method: :delete do |form| %>
+                <%= form.submit 'Видалити', class: 'btn btn-danger' %>
+              <% end %>
+            </td>
+          </tr>
+        <% else %>  <!-- Якщо продукт відсутній -->
+          <tr>
+           
+          </tr>
+        <% end %>
+      <% end %>
+    </tbody>
+  </table>
+  <h3>Всього: <%= number_to_currency(@cart.cart_items.sum { |item| item.product.present? ? item.quantity * item.product.price : 0 }, unit: "₴", format: "%u %n") %></h3>  <%= link_to 'Оформити замовлення', new_order_path, class: 'btn btn-success' %>
+<% else %>
+  <p>У вашій корзині немає товарів.</p>
+<% end %>
+
+<%= link_to 'Продовжити покупки', products_path %>

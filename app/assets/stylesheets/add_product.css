@@ -1,0 +1,103 @@
+/* Контейнер для форми */
+.name {
+    max-width: 700px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #e9ecef;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    font-family: Arial, sans-serif;
+    color: #333;
+}
+
+/* Заголовок */
+.name h1 {
+    text-align: center;
+    color: #333;
+    margin-bottom: 20px;
+}
+
+/* Форма */
+.name form {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+/* Блок помилок */
+.name #error_explanation {
+    background-color: #f8d7da;
+    border: 1px solid #f5c6cb;
+    color: #721c24;
+    padding: 15px;
+    margin-bottom: 20px;
+    border-radius: 5px;
+}
+
+.name #error_explanation h2 {
+    margin: 0 0 10px 0;
+}
+
+.name #error_explanation ul {
+    padding-left: 20px;
+    list-style-type: disc;
+}
+
+/* Поля форми */
+.name .field {
+    margin-bottom: 15px;
+}
+
+.name .field label {
+    font-weight: bold;
+    display: block;
+    margin-bottom: 5px;
+}
+
+.name .field input,
+.name .field textarea,
+.name .field select {
+    width: 95%;
+    padding: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.name .field textarea {
+    resize: vertical;
+}
+
+/* Кнопка надсилання */
+.name .actions {
+    text-align: center;
+}
+
+.name .actions input[type="submit"] {
+    background-color: #28a745;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 16px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.name .actions input[type="submit"]:hover {
+    background-color: #218838;
+}
+
+/* Посилання */
+.name a {
+    display: block;
+    text-align: center;
+    margin-top: 15px;
+    color: #007bff;
+    text-decoration: none;
+}
+
+.name a:hover {
+    text-decoration: underline;
+}

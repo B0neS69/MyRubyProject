@@ -1,0 +1,49 @@
+<link rel="stylesheet" type="text/css" href="<%= asset_path('add_product.css') %>">
+
+<div class="name">
+  <h1>Додати новий продукт</h1>
+
+  <%= form_with model: @product, local: true do |form| %>
+    <% if @product.errors.any? %>
+      <div id="error_explanation">
+        <h2><%= pluralize(@product.errors.count, "error") %> prohibited this product from being saved:</h2>
+        <ul>
+          <% @product.errors.full_messages.each do |message| %>
+            <li><%= message %></li>
+          <% end %>
+        </ul>
+      </div>
+    <% end %>
+
+    <div class="field">
+      <%= form.label :name, "Назва" %>
+      <%= form.text_field :name %>
+    </div>
+
+    <div class="field">
+      <%= form.label :category, "Категорія" %>
+      <%= form.text_field :category %>
+    </div>
+
+    <div class="field">
+      <%= form.label :description, "Опис" %>
+      <%= form.text_area :description %>
+    </div>
+
+    <div class="field">
+      <%= form.label :price, "Ціна" %>
+      <%= form.number_field :price, step: 0.01 %>
+    </div>
+
+    <div class="field">
+      <%= form.label :image, "Зображеня" %>
+      <%= form.file_field :image %>
+    </div>
+
+    <div class="actions">
+      <%= form.submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Back to Products', products_path %>
+</div>
